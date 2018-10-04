@@ -45,8 +45,5 @@ export default {
   },
   goForgot: function() {
     this.props.history.push("/forgot");
-    console.log("🛠🛠🛠🛠🛠");
-    console.log(this.props);
-    console.log("🛠🛠🛠🛠🛠");
   }
 };

@@ -10,9 +10,18 @@ export function userLogin(email, password) {
     data: {
       user: {
         user_handler: email,
-        // "player_id": "8da9dfca-df29-46e6-b98d-b2b6c21e457c",
         password: password
       }
     }
+  }).then(res => {
+    axios.defaults.headers.common["Authorization"] = res.data.token;
+    return res;
+  });
+}
+
+export function userLogout(token) {
+  return axios({
+    method: "DELETE",
+    url: "/logout"
   });
 }
