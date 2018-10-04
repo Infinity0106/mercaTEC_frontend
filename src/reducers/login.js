@@ -4,7 +4,9 @@ export default (
     password: "1234567890",
     token: null,
     error: false,
-    error_msg: ""
+    error_msg: "",
+    signed: true,
+    username: ""
   },
   action
 ) => {
@@ -24,7 +26,7 @@ export default (
       newState.error = action.value;
       newState.error_msg = "";
       break;
-    case "SET_VALUE":
+    case "SET_LOGIN_VALUE":
       newState[action.key] = action.value;
       break;
     default:

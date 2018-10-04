@@ -28,11 +28,25 @@ export default {
       });
     }, 3000);
   },
-  setValue: function(e, { type }) {
+  signup: function() {},
+  setValue: function(e, { key }) {
     this.props.dispatch({
-      type: "SET_VALUE",
-      key: type,
+      type: "SET_LOGIN_VALUE",
+      key: key,
       value: e.target.value
     });
+  },
+  changeView: function() {
+    this.props.dispatch({
+      type: "SET_LOGIN_VALUE",
+      key: "signed",
+      value: !this.props.data.signed
+    });
+  },
+  goForgot: function() {
+    this.props.history.push("/forgot");
+    console.log("🛠🛠🛠🛠🛠");
+    console.log(this.props);
+    console.log("🛠🛠🛠🛠🛠");
   }
 };

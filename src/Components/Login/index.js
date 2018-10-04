@@ -7,8 +7,10 @@ import {
   Icon,
   Image,
   Header,
-  Button
+  Button,
+  Divider
 } from "semantic-ui-react";
+import { withRouter } from "react-router-dom";
 import Error from "./../Error";
 import Ctrl from "./ctrl";
 
@@ -37,33 +39,10 @@ class Login extends Component {
                 Desarrollo de applicaciones web
               </Header.Subheader>
             </Header>
-            <Segment raised>
-              <Input
-                style={{ marginBottom: 10 }}
-                fluid
-                iconPosition="left"
-                placeholder="Email"
-                type="email"
-                value={this.props.data.email}
-                onChange={Ctrl.setValue.bind(this)}
-              >
-                <Icon name="at" />
-                <input />
-              </Input>
-              <Input
-                fluid
-                iconPosition="left"
-                placeholder="Password"
-                type="password"
-                style={{ marginBottom: 10 }}
-                value={this.props.data.password}
-                onChange={Ctrl.setValue.bind(this)}
-              >
-                <Icon name="lock" />
-                <input />
-              </Input>
-              <Button positive fluid onClick={Ctrl.login.bind(this)}>
-                Login
+            <Segment raised>{this.renderForm()}</Segment>
+            <Segment raised textAlign="center">
+              <Button fluid onClick={Ctrl.goForgot.bind(this)}>
+                Forgot your password?
               </Button>
             </Segment>
           </Grid.Column>
@@ -71,12 +50,108 @@ class Login extends Component {
       </div>
     );
   }
+  renderForm() {
+    if (this.props.data.signed) {
+      return (
+        <div>
+          <Input
+            style={{ marginBottom: 10 }}
+            autoFocus
+            fluid
+            iconPosition="left"
+            placeholder="Email"
+            type="email"
+            key="email"
+            value={this.props.data.email}
+            onChange={Ctrl.setValue.bind(this)}
+          >
+            <Icon name="at" />
+            <input />
+          </Input>
+          <Input
+            fluid
+            iconPosition="left"
+            placeholder="Password"
+            type="password"
+            key="password"
+            style={{ marginBottom: 10 }}
+            value={this.props.data.password}
+            onChange={Ctrl.setValue.bind(this)}
+          >
+            <Icon name="lock" />
+            <input />
+          </Input>
+          <Button positive fluid onClick={Ctrl.login.bind(this)}>
+            Login
+          </Button>
+          <Divider horizontal>OR</Divider>
+          <Button color="black" fluid onClick={Ctrl.changeView.bind(this)}>
+            Signup
+          </Button>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <Input
+            style={{ marginBottom: 10 }}
+            fluid
+            iconPosition="left"
+            placeholder="Full name"
+            type="text"
+            key="username"
+            autoFocus
+            value={this.props.data.username}
+            onChange={Ctrl.setValue.bind(this)}
+          >
+            <Icon name="user" />
+            <input />
+          </Input>
+          <Input
+            style={{ marginBottom: 10 }}
+            fluid
+            iconPosition="left"
+            placeholder="Email"
+            type="email"
+            key="email"
+            value={this.props.data.email}
+            onChange={Ctrl.setValue.bind(this)}
+          >
+            <Icon name="at" />
+            <input />
+          </Input>
+          <Input
+            fluid
+            iconPosition="left"
+            placeholder="Password"
+            type="password"
+            key="password"
+            style={{ marginBottom: 10 }}
+            value={this.props.data.password}
+            onChange={Ctrl.setValue.bind(this)}
+          >
+            <Icon name="lock" />
+            <input />
+          </Input>
+          <Button positive fluid onClick={Ctrl.signup.bind(this)}>
+            Signup
+          </Button>
+          <Divider horizontal>OR</Divider>
+          <Button color="black" fluid onClick={Ctrl.changeView.bind(this)}>
+            Login
+          </Button>
+        </div>
+      );
+    }
+  }
   componentDidMount() {}
   componentWillUnmount() {}
 }
 
-export default connect(store => {
-  return {
-    data: store.login
-  };
-})(Login);
+export default withRouter(
+  connect(store => {
+    return {
+      data: store.login
+    };
+  })(Login)
+);

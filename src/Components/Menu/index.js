@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./style.css";
 import { connect } from "react-redux";
 import { Menu, Dropdown, Image } from "semantic-ui-react";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter, Redirect, Link } from "react-router-dom";
+import Ctrl from "./ctrl";
 
 class AppMenu extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class AppMenu extends Component {
       <div style={{ height: "100%" }}>
         {this.props.data.token === null && <Redirect to="/login" />}
         <Menu attached={"top"} inverted>
-          <Menu.Item name="editorials">
+          <Menu.Item name="editorials" onClick={Ctrl.toggleSideMenu.bind(this)}>
             <Image src="/white_lamb.svg" size="mini" centered />
           </Menu.Item>
           {/* <Menu.Item name="reviews">Reviews</Menu.Item>
@@ -38,9 +39,15 @@ class AppMenu extends Component {
               }
             >
               <Dropdown.Menu>
-                <Dropdown.Item>Mi perfil</Dropdown.Item>
+                <Link to="/account">
+                  <Dropdown.Item style={{ color: "rgba(0,0,0,.87)" }}>
+                    Mi perfil
+                  </Dropdown.Item>
+                </Link>
                 <Dropdown.Divider />
-                <Dropdown.Item>Log-out</Dropdown.Item>
+                <Dropdown.Item onClick={Ctrl.logout.bind(this)}>
+                  Log-out
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Menu>

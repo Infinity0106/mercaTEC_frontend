@@ -18,7 +18,7 @@ class SideNav extends Component {
           icon="labeled"
           inverted
           vertical
-          visible
+          visible={this.props.data.menu_open}
           width="thin"
         >
           <Link to="/">
@@ -59,7 +59,7 @@ class SideNav extends Component {
 export default withRouter(
   connect(store => {
     return {
-      data: null
+      data: store.menu
     };
   })(SideNav)
 );
