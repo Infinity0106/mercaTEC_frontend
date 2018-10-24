@@ -94,3 +94,13 @@ export function deleteImage(id) {
     url: `/images/${id}`
   });
 }
+
+export function userSignUp(data) {
+  return axios({
+    method: "POST",
+    url: "/signup",
+    data: {
+      user: data
+    }
+  });
+}

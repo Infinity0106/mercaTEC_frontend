@@ -5,6 +5,7 @@ import { Container, Menu, Header, Segment } from "semantic-ui-react";
 import Ctrl from "./ctrl";
 
 import BasicInfo from "./basic_info";
+import GoalsInfo from "./goals_info";
 
 class Account extends Component {
   constructor(props) {
@@ -22,26 +23,14 @@ class Account extends Component {
           <Menu pointing secondary>
             <Menu.Item
               name="Informacion basica"
-              active={true}
+              active={this.props.data.active === "basic"}
               data_value="basic"
               onClick={Ctrl.setActiveValue.bind(this)}
             />
             <Menu.Item
               name="Informacion trabajo"
-              active={true}
-              data_value="work"
-              onClick={Ctrl.setActiveValue.bind(this)}
-            />
-            <Menu.Item
-              name="Mis eventos"
-              active={true}
-              data_value="events"
-              onClick={Ctrl.setActiveValue.bind(this)}
-            />
-            <Menu.Item
-              name="Mis productos"
-              active={true}
-              data_value="products"
+              active={this.props.data.active === "goals"}
+              data_value="goals"
               onClick={Ctrl.setActiveValue.bind(this)}
             />
           </Menu>
@@ -51,18 +40,14 @@ class Account extends Component {
     );
   }
   renderBodyContent() {
-    return <BasicInfo />;
-    // switch (this.props.data.active) {
-    //   case "basic":
-    //   case "work":
-    //     return <WorkInfo />;
-    //   case "events":
-    //     return <AddEvent />;
-    //   case "products":
-    //     return <AddProduct />;
-    //   default:
-    //     return null;
-    // }
+    switch (this.props.data.active) {
+      case "basic":
+        return <BasicInfo />;
+      case "goals":
+        return <GoalsInfo />;
+      default:
+        return null;
+    }
   }
   componentDidMount() {}
   componentWillUnmount() {}

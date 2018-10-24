@@ -61,7 +61,7 @@ class Login extends Component {
             iconPosition="left"
             placeholder="Email"
             type="email"
-            key="email"
+            data_key="email"
             value={this.props.data.email}
             onChange={Ctrl.setValue.bind(this)}
           >
@@ -73,7 +73,7 @@ class Login extends Component {
             iconPosition="left"
             placeholder="Password"
             type="password"
-            key="password"
+            data_key="password"
             style={{ marginBottom: 10 }}
             value={this.props.data.password}
             onChange={Ctrl.setValue.bind(this)}
@@ -99,7 +99,7 @@ class Login extends Component {
             iconPosition="left"
             placeholder="Full name"
             type="text"
-            key="username"
+            data_key="username"
             autoFocus
             value={this.props.data.username}
             onChange={Ctrl.setValue.bind(this)}
@@ -113,7 +113,7 @@ class Login extends Component {
             iconPosition="left"
             placeholder="Email"
             type="email"
-            key="email"
+            data_key="email"
             value={this.props.data.email}
             onChange={Ctrl.setValue.bind(this)}
           >
@@ -125,9 +125,22 @@ class Login extends Component {
             iconPosition="left"
             placeholder="Password"
             type="password"
-            key="password"
+            data_key="password"
             style={{ marginBottom: 10 }}
             value={this.props.data.password}
+            onChange={Ctrl.setValue.bind(this)}
+          >
+            <Icon name="lock" />
+            <input />
+          </Input>
+          <Input
+            fluid
+            iconPosition="left"
+            placeholder="Password confirmation"
+            type="password"
+            data_key="password_confirmation"
+            style={{ marginBottom: 10 }}
+            value={this.props.data.password_confirmation}
             onChange={Ctrl.setValue.bind(this)}
           >
             <Icon name="lock" />

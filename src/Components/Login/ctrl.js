@@ -1,4 +1,4 @@
-import { userLogin } from "./../../backend";
+import { userLogin, userSignUp } from "./../../backend";
 
 export default {
   login: function() {
@@ -29,12 +29,20 @@ export default {
     }, 3000);
   },
   signup: function() {
-    //TODO: implementar
+    let self = this;
+    this.props
+      .dispatch({
+        type: "REQUEST_SIGN_UP",
+        payload: userSignUp(this.props.data)
+      })
+      .then(() => {
+        self.props.history.replace("/");
+      });
   },
-  setValue: function(e, { key }) {
+  setValue: function(e, { data_key }) {
     this.props.dispatch({
       type: "SET_LOGIN_VALUE",
-      key: key,
+      key: data_key,
       value: e.target.value
     });
   },
