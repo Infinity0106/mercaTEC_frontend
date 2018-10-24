@@ -104,3 +104,30 @@ export function userSignUp(data) {
     }
   });
 }
+
+export function userForgot(user_handler) {
+  return axios({
+    method: "POST",
+    url: "/forgot",
+    data: {
+      user: { user_handler }
+    }
+  });
+}
+
+export function userChangePass(data, id) {
+  console.log("🛠🛠🛠🛠🛠");
+  console.log(data.value);
+  console.log(id);
+  console.log("🛠🛠🛠🛠🛠");
+  return axios({
+    method: "PUT",
+    url: `/forgot/${data.value || id}`,
+    data: {
+      user: {
+        password: data.password,
+        password_confirmation: data.password_confirmation
+      }
+    }
+  });
+}

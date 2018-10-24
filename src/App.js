@@ -11,6 +11,7 @@ import Buyers from "./Components/Buyers";
 import SideNav from "./Components/SideNav";
 import Account from "./Components/Account";
 import Forgot from "./Components/Forgot";
+import ForgotPassword from "./Components/ForgotPassword";
 import Products from "./Components/Productos";
 import Product from "./Components/Producto";
 
@@ -29,6 +30,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/forgot" component={Forgot} />
+          <Route exact path="/forgot/:id" component={ForgotPassword} />
           <Route exact path="/login" component={Login} />
           <Menu>
             <SideNav>

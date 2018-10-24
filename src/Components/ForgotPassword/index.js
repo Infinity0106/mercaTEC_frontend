@@ -5,14 +5,14 @@ import {
   Image,
   Header,
   Segment,
-  Button,
   Input,
-  Icon
+  Icon,
+  Button
 } from "semantic-ui-react";
-import Error from "./../Error";
 import Ctrl from "./ctrl";
+import Error from "./../Error";
 
-class Forgot extends Component {
+class ForgotPassword extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -44,16 +44,30 @@ class Forgot extends Component {
                   autoFocus
                   fluid
                   iconPosition="left"
-                  placeholder="Email"
-                  type="email"
-                  data_key="user_handler"
-                  value={this.props.data.email}
+                  placeholder="Password"
+                  type="password"
+                  data_key="password"
+                  value={this.props.data.password}
                   onChange={Ctrl.setValue.bind(this)}
                 >
                   <Icon name="at" />
                   <input />
                 </Input>
-                <Button positive fluid onClick={Ctrl.forgot.bind(this)}>
+                <Input
+                  style={{ marginBottom: 10 }}
+                  autoFocus
+                  fluid
+                  iconPosition="left"
+                  placeholder="Password confirmation"
+                  type="password"
+                  data_key="password_confirmation"
+                  value={this.props.data.password_confirmation}
+                  onChange={Ctrl.setValue.bind(this)}
+                >
+                  <Icon name="at" />
+                  <input />
+                </Input>
+                <Button positive fluid onClick={Ctrl.resetPassword.bind(this)}>
                   Submit
                 </Button>
               </div>
@@ -71,4 +85,4 @@ export default connect(store => {
   return {
     data: store.forgot
   };
-})(Forgot);
+})(ForgotPassword);

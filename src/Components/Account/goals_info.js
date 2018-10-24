@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Segment, Header, Form, Dropdown, Button } from "semantic-ui-react";
+import { Segment, Header, Form } from "semantic-ui-react";
 import { connect } from "react-redux";
 
 class GoalsInfo extends Component {
