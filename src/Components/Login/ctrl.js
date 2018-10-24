@@ -28,7 +28,9 @@ export default {
       });
     }, 3000);
   },
-  signup: function() {},
+  signup: function() {
+    //TODO: implementar
+  },
   setValue: function(e, { key }) {
     this.props.dispatch({
       type: "SET_LOGIN_VALUE",

@@ -16,11 +16,21 @@ export default (
       break;
     case "REQUEST_USER_LOGIN_FULFILLED":
       newState.token = action.payload.data.token;
+      sessionStorage.setItem("JWT", newState.token);
       break;
     case "REQUEST_USER_LOGIN_REJECTED":
       newState.error = true;
       newState.error_msg =
         action.error_msg || action.payload.response.data.errors.join("<br/>");
+      break;
+    case "REQUEST_USER_LOGOUT_PENDING":
+      break;
+    case "REQUEST_USER_LOGOUT_FULFILLED":
+      sessionStorage.removeItem("JWT");
+      break;
+    case "REQUEST_USER_LOGOUT_REJECTED":
+      sessionStorage.removeItem("JWT");
+      newState.token = null;
       break;
     case "SET_LOGIN_ERROR":
       newState.error = action.value;

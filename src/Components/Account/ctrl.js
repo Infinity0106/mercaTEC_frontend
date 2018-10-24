@@ -1,5 +1,5 @@
-export function setActiveValue(e, { data_value }) {}
-
-export function setValue(e, data) {}
-
-export function getInitialInfo() {}
+export default {
+  setActiveValue: function(e, { data_value }) {},
+  setValue: function(e, data) {},
+  getInitialInfo: function() {}
+};

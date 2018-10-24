@@ -33,17 +33,17 @@ class SideNav extends Component {
               Compradores
             </Menu.Item>
           </Link>
-          <Menu.Item as="a">
-            <Icon name="food" />
-            Productos
-          </Menu.Item>
+          <Link to="/products">
+            <Menu.Item active={this.props.location.pathname === "/products"}>
+              <Icon name="food" />
+              Productos
+            </Menu.Item>
+          </Link>
         </Sidebar>
         <Sidebar.Pusher
           as="div"
           style={{
-            paddingTop: 10,
-            paddingLeft: 10,
-            paddingRight: 10,
+            padding: 10,
             backgroundColor: "rgba(0,0,0,.25)"
           }}
         >

@@ -11,9 +11,19 @@ import Buyers from "./Components/Buyers";
 import SideNav from "./Components/SideNav";
 import Account from "./Components/Account";
 import Forgot from "./Components/Forgot";
+import Products from "./Components/Productos";
+import Product from "./Components/Producto";
 
 class App extends Component {
-  componentWillMount() {}
+  componentWillMount() {
+    let current_jwt = sessionStorage.getItem("JWT");
+    if (current_jwt !== null)
+      this.props.dispatch({
+        type: "SET_LOGIN_VALUE",
+        key: "token",
+        value: current_jwt
+      });
+  }
   render() {
     return (
       <Router>
@@ -25,6 +35,8 @@ class App extends Component {
               <Route exact path="/" component={Sales} />
               <Route exact path="/buyers" component={Buyers} />
               <Route exact path="/account" component={Account} />
+              <Route exact path="/products" component={Products} />
+              <Route exact path="/products/:id" component={Product} />
             </SideNav>
           </Menu>
           <Route component={NotFound} />

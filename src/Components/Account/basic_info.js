@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Segment, Header, Form, Dropdown, Button } from "semantic-ui-react";
-import * as Ctrl from "./ctrl";
+import Ctrl from "./ctrl";
 
 class BasicInfo extends Component {
   constructor(props) {
@@ -34,7 +34,11 @@ class BasicInfo extends Component {
                 search
                 selection
                 value={this.props.mother}
-                options={this.props.parents}
+                options={[
+                  { key: "1", value: "1", text: "1" },
+                  { key: "2", value: "2", text: "2" },
+                  { key: "3", value: "3", text: "3" }
+                ]}
                 data_key="mother"
                 onChange={Ctrl.setValue.bind(this)}
               />
@@ -47,7 +51,11 @@ class BasicInfo extends Component {
                 search
                 selection
                 data_key="father"
-                options={this.props.parents}
+                options={[
+                  { key: "1", value: "1", text: "1" },
+                  { key: "2", value: "2", text: "2" },
+                  { key: "3", value: "3", text: "3" }
+                ]}
               />
             </Form.Field>
           </Form.Group>

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Container, Grid, Menu, Header, Segment } from "semantic-ui-react";
+import { Container, Menu, Header, Segment } from "semantic-ui-react";
 
-import * as Ctrl from "./ctrl";
+import Ctrl from "./ctrl";
 
 import BasicInfo from "./basic_info";
 
