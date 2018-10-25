@@ -75,5 +75,21 @@ export default {
         value: false
       });
     }, 3000);
+  },
+  getProductQr: function() {
+    this.props
+      .dispatch({
+        type: "REQUEST_GET_PRODUCT_QR",
+        payload: Backend.getProductQr(this.props.data)
+      })
+      .then(res => {
+        //HACK: done for downloading the file
+        const url = window.URL.createObjectURL(res.value.data);
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", `${this.props.data}_qr.png`);
+        link.click();
+        link.remove();
+      });
   }
 };

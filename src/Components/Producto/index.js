@@ -14,10 +14,12 @@ import {
   List,
   Confirm
 } from "semantic-ui-react";
+import QRcode from "qrcode.react";
 import UpdateImage from "./update_image";
 import Ctrl from "./ctrl";
 import Error from "./../Error";
 import Success from "./../Success";
+import DownloadQr from "./download_qr";
 
 class Products extends Component {
   constructor(props) {
@@ -61,7 +63,9 @@ class Products extends Component {
           <Header as="h3" dividing>
             {this.props.data.name}
           </Header>
-
+          <p>product identifier, download this and put it near your product</p>
+          <DownloadQr data={this.props.data.id} />
+          <br />
           <List horizontal style={{ overflowX: "auto", maxHeight: 200 }}>
             {this.props.data.images.map(ele => (
               <UpdateImage data={ele} />

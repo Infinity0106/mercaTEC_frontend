@@ -116,10 +116,6 @@ export function userForgot(user_handler) {
 }
 
 export function userChangePass(data, id) {
-  console.log("🛠🛠🛠🛠🛠");
-  console.log(data.value);
-  console.log(id);
-  console.log("🛠🛠🛠🛠🛠");
   return axios({
     method: "PUT",
     url: `/forgot/${data.value || id}`,
@@ -129,5 +125,13 @@ export function userChangePass(data, id) {
         password_confirmation: data.password_confirmation
       }
     }
+  });
+}
+
+export function getProductQr(id) {
+  return axios({
+    method: "GET",
+    url: `/products/${id}/qr`,
+    responseType: "blob"
   });
 }
