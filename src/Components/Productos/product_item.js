@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { List, Image, Container, Grid } from "semantic-ui-react";
-import QRcode from "qrcode.react";
+import QRcode from "./../QRcode";
 import Slider from "react-slick";
 import Ctrl from "./ctrl";
 
@@ -62,12 +62,12 @@ class ProductItem extends Component {
             src={"https://semantic-ui.com/images/wireframe/image.png"}
             size="small"
             style={{
-                width: "auto",
-                maxHeight: 128,
-                fontSize: "1rem",
-                display: "block",
-                margin: "auto"
-              }}
+              width: "auto",
+              maxHeight: 128,
+              fontSize: "1rem",
+              display: "block",
+              margin: "auto"
+            }}
           />
         </Container>
       );

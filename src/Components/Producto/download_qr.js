@@ -10,7 +10,7 @@ import {
   Confirm
 } from "semantic-ui-react";
 import Ctrl from "./ctrl";
-import QrCode from "qrcode.react";
+import QRcode from "./../QRcode";
 
 class UpdateImage extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class UpdateImage extends Component {
           </Button>
         </Dimmer>
         <p>
-          <QrCode value={this.props.data} />
+          <QRcode value={this.props.data} />
         </p>
       </Dimmer.Dimmable>
     );
