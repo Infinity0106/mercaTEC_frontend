@@ -21,7 +21,7 @@ class SideNav extends Component {
           visible={this.props.data.menu_open}
           width="thin"
         >
-          <Link to="/">
+          {/* <Link to="/">
             <Menu.Item active={this.props.location.pathname === "/"}>
               <Icon name="money bill alternate outline" />
               Ventas
@@ -32,8 +32,8 @@ class SideNav extends Component {
               <Icon name="address book outline" />
               Compradores
             </Menu.Item>
-          </Link>
-          <Link to="/products">
+          </Link> */}
+          <Link to="/">
             <Menu.Item active={this.props.location.pathname === "/products"}>
               <Icon name="food" />
               Productos

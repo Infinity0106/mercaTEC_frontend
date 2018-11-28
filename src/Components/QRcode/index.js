@@ -11,10 +11,12 @@ class QRcode extends Component {
     };
   }
   componentWillMount() {
-    console.log("🛠🛠🛠🛠🛠");
-    console.log(QRCode);
-    console.log("🛠🛠🛠🛠🛠");
     QRCode.toDataURL(this.props.data).then(base_data =>
+      this.setState({ base_data })
+    );
+  }
+  componentWillReceiveProps(props) {
+    QRCode.toDataURL(props.value).then(base_data =>
       this.setState({ base_data })
     );
   }
@@ -26,9 +28,6 @@ class QRcode extends Component {
 }
 
 export default connect((store, props) => {
-  console.log("🛠🛠🛠🛠🛠");
-  console.log(props);
-  console.log("🛠🛠🛠🛠🛠");
   return {
     data: props.value
   };

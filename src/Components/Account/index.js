@@ -6,6 +6,8 @@ import Ctrl from "./ctrl";
 
 import BasicInfo from "./basic_info";
 import GoalsInfo from "./goals_info";
+import Error from "./../Error";
+import Success from "./../Success";
 
 class Account extends Component {
   constructor(props) {
@@ -18,6 +20,15 @@ class Account extends Component {
   render() {
     return (
       <Container>
+        <Error open={this.props.data.error} onStart={Ctrl.hideError.bind(this)}>
+          <p>{this.props.data.error_msg}</p>
+        </Error>
+        <Success
+          open={this.props.data.success}
+          onStart={Ctrl.hideSuccess.bind(this)}
+        >
+          <p>Info updated</p>
+        </Success>
         <Segment raised>
           <Header as="h1">Account</Header>
           <Menu pointing secondary>
@@ -28,7 +39,7 @@ class Account extends Component {
               onClick={Ctrl.setActiveValue.bind(this)}
             />
             <Menu.Item
-              name="Informacion trabajo"
+              name="Metas de trabajo"
               active={this.props.data.active === "goals"}
               data_value="goals"
               onClick={Ctrl.setActiveValue.bind(this)}

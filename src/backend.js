@@ -1,6 +1,7 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:3000/api/v1";
+// axios.defaults.baseURL = " https://radiant-taiga-43847.herokuapp.com/api/v1";
+axios.defaults.baseURL = " http://localhost:3000/api/v1";
 axios.defaults.headers.common["X-Application"] = "app";
 axios.defaults.headers.common["Authorization"] = sessionStorage.getItem("JWT");
 
@@ -102,6 +103,9 @@ export function userSignUp(data) {
     data: {
       user: data
     }
+  }).then(res => {
+    axios.defaults.headers.common["Authorization"] = res.data.token;
+    return res;
   });
 }
 
@@ -133,5 +137,13 @@ export function getProductQr(id) {
     method: "GET",
     url: `/products/${id}/qr`,
     responseType: "blob"
+  });
+}
+
+export function updateAccount(data) {
+  return axios({
+    method: "PUT",
+    url: `/users/${data.id}`,
+    data
   });
 }

@@ -1,10 +1,10 @@
 export default (
   state = {
-    description: "rasdfasd",
+    description: "",
     id: "c5aa8d55-5e04-407f-bac7-6a6120d0e14b",
     images: [],
-    name: "2",
-    price: "3.00",
+    name: "",
+    price: "",
     add_images: null,
     error: false,
     error_msg: "",

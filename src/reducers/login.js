@@ -1,8 +1,10 @@
+import JWT from "jsonwebtoken";
+
 export default (
   state = {
-    email: "berny.orozco@hotmail.com",
-    password: "1234567890",
-    password_confirmation: "1234567890",
+    email: "",
+    password: "",
+    password_confirmation: "",
     token: null,
     error: false,
     error_msg: "",
@@ -17,6 +19,7 @@ export default (
       break;
     case "REQUEST_USER_LOGIN_FULFILLED":
       newState.token = action.payload.data.token;
+      newState.user = JWT.decode(newState.token);
       sessionStorage.setItem("JWT", newState.token);
       break;
     case "REQUEST_USER_LOGIN_REJECTED":
@@ -35,6 +38,7 @@ export default (
       break;
     case "REQUEST_SIGN_UP_FULFILLED":
       newState.token = action.payload.data.token;
+      newState.user = JWT.decode(newState.token);
       sessionStorage.setItem("JWT", newState.token);
       break;
     case "REQUEST_SIGN_UP_REJECTED":
@@ -47,6 +51,9 @@ export default (
       break;
     case "SET_LOGIN_VALUE":
       newState[action.key] = action.value;
+      if (action.key === "token") {
+        newState.user = JWT.decode(newState.token);
+      }
       break;
     default:
       break;

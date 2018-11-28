@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  Dimmer,
-  Segment,
-  Image,
-  List,
-  Button,
-  Icon,
-  Confirm
-} from "semantic-ui-react";
+import { Dimmer, Segment, Button, Icon } from "semantic-ui-react";
 import Ctrl from "./ctrl";
 import QRcode from "./../QRcode";
 
@@ -32,7 +24,7 @@ class UpdateImage extends Component {
         <Dimmer active={this.state.show_opt}>
           <Button positive onClick={Ctrl.getProductQr.bind(this)}>
             <Icon name="save" />
-            Delete
+            Download
           </Button>
         </Dimmer>
         <p>

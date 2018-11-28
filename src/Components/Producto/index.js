@@ -14,7 +14,6 @@ import {
   List,
   Confirm
 } from "semantic-ui-react";
-import QRcode from "qrcode.react";
 import UpdateImage from "./update_image";
 import Ctrl from "./ctrl";
 import Error from "./../Error";
